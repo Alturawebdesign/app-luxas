@@ -6,9 +6,18 @@ pour entrepreneurs. Il centralise le suivi complet des clients accompagnés dans
 garde-robe stratégique, séances (WhatsApp + visio + journée shopping + sélection en ligne) et
 administratif.
 
-## ✨ Fonctionnalités
+Le portail propose **deux espaces** avec une authentification par rôle :
 
-- **Authentification admin** — espace réservé à Lilia (démo : n'importe quels identifiants).
+- **Espace admin** (Lilia) — suivi complet de tous les clients.
+- **Espace client** — chaque client accède à son propre portail (sa transformation,
+  son programme, ses documents, sa messagerie avec Lilia), sans les fonctions admin.
+
+Sur l'écran de connexion, un sélecteur **Espace admin / Espace client** permet de basculer
+entre les deux (démo).
+
+## ✨ Fonctionnalités — Espace admin
+
+- **Authentification par rôle** — espace réservé à Lilia (démo : n'importe quels identifiants).
 - **Barre de navigation latérale** vers toutes les pages du portail.
 - **Tableau de bord** — KPI agrégés, progression du score d'image, prochaines séances, suivi clients.
 - **Liste des clients** avec KPI liés à la prestation :
@@ -29,6 +38,20 @@ administratif.
 - **Messagerie** — conversations par client, envoi de messages (démo).
 - **Documents** — vue administrative globale (facturé / encaissé / en attente).
 - **Paramètres** — profil, notifications, facturation, sécurité.
+
+## 👤 Fonctionnalités — Espace client
+
+Quand un client se connecte (`/espace`), il retrouve, avec sa propre barre de navigation latérale :
+
+- **Accueil** — message de bienvenue personnalisé, ses KPI, sa progression, sa prochaine séance,
+  un mot de Lilia et son dernier look validé.
+- **Mon programme** — la timeline de sa transformation en 30 jours.
+- **Mon audit** — son diagnostic image (morphologie, colorimétrie, palette, objectifs).
+- **Mon lookbook** — ses tenues composées par situation.
+- **Ma garde-robe** — ses pièces stratégiques et leur budget.
+- **Mes séances** — son agenda audit / visio / shopping / sélection / bilan.
+- **Mes documents** — ses contrats, factures et livrables.
+- **Messagerie** — sa conversation avec Lilia.
 
 ## 🛠️ Stack
 

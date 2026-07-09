@@ -1,21 +1,37 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
+import { clients } from '../data/clients'
 
-interface Admin {
+interface AdminUser {
+  role: 'admin'
   name: string
-  role: string
+  title: string
   email: string
   initials: string
 }
 
+interface ClientUser {
+  role: 'client'
+  clientId: string
+  name: string
+  title: string
+  email: string
+  initials: string
+  avatarColor: string
+}
+
+export type User = AdminUser | ClientUser
+
 interface AuthContextValue {
-  admin: Admin | null
-  login: (email: string, password: string) => boolean
+  user: User | null
+  loginAdmin: (email: string, password: string) => boolean
+  loginClient: (clientId: string, password: string) => boolean
   logout: () => void
 }
 
-const LILIA: Admin = {
+const LILIA: AdminUser = {
+  role: 'admin',
   name: 'Lilia Maksimtchouk',
-  role: 'Experte en image',
+  title: 'Experte en image',
   email: 'lilia@thelookbylilia.com',
   initials: 'LM',
 }
@@ -24,24 +40,55 @@ const STORAGE_KEY = 'tlbl-auth'
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined)
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [admin, setAdmin] = useState<Admin | null>(() => {
-    try {
-      return sessionStorage.getItem(STORAGE_KEY) ? LILIA : null
-    } catch {
-      return null
-    }
-  })
+function restore(): User | null {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    return JSON.parse(raw) as User
+  } catch {
+    return null
+  }
+}
 
-  const login = (email: string, password: string) => {
-    // Demo auth — any credentials sign you in as Lilia (admin).
+function persist(user: User) {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(user))
+  } catch {
+    /* ignore */
+  }
+}
+
+function clientUser(clientId: string): ClientUser | null {
+  const c = clients.find((x) => x.id === clientId)
+  if (!c) return null
+  return {
+    role: 'client',
+    clientId: c.id,
+    name: `${c.firstName} ${c.lastName}`,
+    title: c.role,
+    email: c.email,
+    initials: `${c.firstName[0]}${c.lastName[0]}`,
+    avatarColor: c.avatarColor,
+  }
+}
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(restore)
+
+  const loginAdmin = (email: string, password: string) => {
     if (email.trim() && password.trim()) {
-      try {
-        sessionStorage.setItem(STORAGE_KEY, '1')
-      } catch {
-        /* ignore */
-      }
-      setAdmin(LILIA)
+      persist(LILIA)
+      setUser(LILIA)
+      return true
+    }
+    return false
+  }
+
+  const loginClient = (clientId: string, password: string) => {
+    const u = clientUser(clientId)
+    if (u && password.trim()) {
+      persist(u)
+      setUser(u)
       return true
     }
     return false
@@ -53,10 +100,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       /* ignore */
     }
-    setAdmin(null)
+    setUser(null)
   }
 
-  return <AuthContext.Provider value={{ admin, login, logout }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ user, loginAdmin, loginClient, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

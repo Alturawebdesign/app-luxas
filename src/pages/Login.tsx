@@ -1,21 +1,30 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Lock, Mail } from 'lucide-react'
+import { ArrowRight, Lock, Mail, ChevronDown } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { clients, fullName } from '../data/clients'
+
+type Mode = 'admin' | 'client'
 
 export default function Login() {
-  const { login } = useAuth()
+  const { loginAdmin, loginClient } = useAuth()
   const navigate = useNavigate()
+  const [mode, setMode] = useState<Mode>('admin')
+
   const [email, setEmail] = useState('lilia@thelookbylilia.com')
   const [password, setPassword] = useState('demo')
+  const [clientId, setClientId] = useState(clients[0].id)
   const [error, setError] = useState('')
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (login(email, password)) {
-      navigate('/')
+    setError('')
+    if (mode === 'admin') {
+      if (loginAdmin(email, password)) navigate('/')
+      else setError('Veuillez renseigner votre email et votre mot de passe.')
     } else {
-      setError('Veuillez renseigner votre email et votre mot de passe.')
+      if (loginClient(clientId, password || 'demo')) navigate('/espace')
+      else setError('Impossible de se connecter à cet espace client.')
     }
   }
 
@@ -47,8 +56,9 @@ export default function Login() {
             <span className="italic text-camel-200">réinventez</span> votre succès.
           </p>
           <p className="mt-6 max-w-sm text-cream-100/70">
-            Le portail dédié au suivi de vos clients : audits image, garde-robe stratégique,
-            programme de transformation en 30 jours.
+            {mode === 'admin'
+              ? 'Le portail dédié au suivi de vos clients : audits image, garde-robe stratégique, programme de transformation en 30 jours.'
+              : 'Votre espace personnel : suivez votre transformation, vos looks, votre garde-robe et échangez avec Lilia.'}
           </p>
         </div>
 
@@ -83,26 +93,77 @@ export default function Login() {
             </div>
           </div>
 
-          <p className="label">Espace admin</p>
-          <h1 className="mt-1 font-serif text-3xl text-ink">Bienvenue, Lilia</h1>
+          {/* Mode toggle */}
+          <div className="mb-6 flex rounded-full border border-cream-300 bg-white p-1">
+            {(['admin', 'client'] as Mode[]).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => {
+                  setMode(m)
+                  setError('')
+                  setEmail(m === 'admin' ? 'lilia@thelookbylilia.com' : '')
+                }}
+                className={`flex-1 rounded-full py-2 text-sm font-medium transition-colors ${
+                  mode === m ? 'bg-ink text-cream-50' : 'text-ink-soft hover:bg-cream-100'
+                }`}
+              >
+                {m === 'admin' ? 'Espace admin' : 'Espace client'}
+              </button>
+            ))}
+          </div>
+
+          <p className="label">{mode === 'admin' ? 'Espace admin' : 'Espace client'}</p>
+          <h1 className="mt-1 font-serif text-3xl text-ink">
+            {mode === 'admin' ? 'Bienvenue, Lilia' : 'Bon retour'}
+          </h1>
           <p className="mt-2 text-sm text-ink-muted">
-            Connectez-vous pour accéder au suivi de vos clients.
+            {mode === 'admin'
+              ? 'Connectez-vous pour accéder au suivi de vos clients.'
+              : 'Connectez-vous pour accéder à votre transformation.'}
           </p>
 
           <form onSubmit={submit} className="mt-8 space-y-4">
-            <div>
-              <label className="label mb-1.5 block">Email</label>
-              <div className="relative">
-                <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted" />
-                <input
-                  type="email"
-                  className="input pl-10"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="vous@exemple.com"
-                />
+            {mode === 'client' ? (
+              <div>
+                <label className="label mb-1.5 block">Compte client</label>
+                <div className="relative">
+                  <select
+                    className="input appearance-none pr-10"
+                    value={clientId}
+                    onChange={(e) => {
+                      setClientId(e.target.value)
+                      const c = clients.find((x) => x.id === e.target.value)
+                      setEmail(c?.email ?? '')
+                    }}
+                  >
+                    {clients.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {fullName(c)} — {c.company}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={17}
+                    className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-muted"
+                  />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div>
+                <label className="label mb-1.5 block">Email</label>
+                <div className="relative">
+                  <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted" />
+                  <input
+                    type="email"
+                    className="input pl-10"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="vous@exemple.com"
+                  />
+                </div>
+              </div>
+            )}
 
             <div>
               <label className="label mb-1.5 block">Mot de passe</label>
@@ -127,7 +188,8 @@ export default function Login() {
           </form>
 
           <p className="mt-6 rounded-xl bg-cream-50 px-4 py-3 text-center text-xs text-ink-muted">
-            Démo — cliquez simplement sur <span className="font-medium text-ink-soft">Se connecter</span> pour explorer le portail.
+            Démo — {mode === 'admin' ? 'connectez-vous en admin' : 'choisissez un compte client'} et
+            cliquez sur <span className="font-medium text-ink-soft">Se connecter</span>.
           </p>
         </div>
       </div>

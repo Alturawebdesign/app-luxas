@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext'
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { admin, logout } = useAuth()
+  const { user, logout } = useAuth()
   const navigate = useNavigate()
 
   return (
@@ -45,13 +45,13 @@ export default function Layout({ children }: { children: ReactNode }) {
 
               <div className="mx-1 hidden h-8 w-px bg-cream-300 sm:block" />
 
-              {admin && (
+              {user && (
                 <div className="flex items-center gap-3">
                   <div className="hidden text-right leading-tight sm:block">
-                    <p className="text-sm font-medium text-ink">{admin.name}</p>
-                    <p className="text-xs text-ink-muted">{admin.role}</p>
+                    <p className="text-sm font-medium text-ink">{user.name}</p>
+                    <p className="text-xs text-ink-muted">{user.title}</p>
                   </div>
-                  <Avatar initials={admin.initials} color="#8A5E3B" size={38} />
+                  <Avatar initials={user.initials} color="#8A5E3B" size={38} />
                   <button
                     className="btn-ghost"
                     onClick={() => {

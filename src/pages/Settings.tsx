@@ -3,7 +3,7 @@ import { Avatar } from '../components/ui'
 import { useAuth } from '../context/AuthContext'
 
 export default function Settings() {
-  const { admin } = useAuth()
+  const { user } = useAuth()
 
   return (
     <div className="animate-in space-y-6">
@@ -15,10 +15,10 @@ export default function Settings() {
       {/* Profile */}
       <div className="card p-6">
         <div className="flex flex-wrap items-center gap-4">
-          <Avatar initials={admin?.initials ?? 'LM'} color="#8A5E3B" size={72} />
+          <Avatar initials={user?.initials ?? 'LM'} color="#8A5E3B" size={72} />
           <div className="flex-1">
-            <h2 className="font-serif text-xl text-ink">{admin?.name}</h2>
-            <p className="text-ink-muted">{admin?.role} · {admin?.email}</p>
+            <h2 className="font-serif text-xl text-ink">{user?.name}</h2>
+            <p className="text-ink-muted">{user?.title} · {user?.email}</p>
           </div>
           <button className="btn-outline">Modifier la photo</button>
         </div>

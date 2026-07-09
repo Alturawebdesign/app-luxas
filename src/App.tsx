@@ -8,23 +8,52 @@ import CalendarPage from './pages/CalendarPage'
 import Messages from './pages/Messages'
 import DocumentsPage from './pages/DocumentsPage'
 import Settings from './pages/Settings'
+import ClientSpace from './pages/ClientSpace'
 import { useAuth } from './context/AuthContext'
 
-function Protected({ children }: { children: JSX.Element }) {
-  const { admin } = useAuth()
+function RequireAdmin({ children }: { children: JSX.Element }) {
+  const { user } = useAuth()
   const location = useLocation()
-  if (!admin) return <Navigate to="/login" state={{ from: location }} replace />
+  if (!user) return <Navigate to="/login" state={{ from: location }} replace />
+  if (user.role === 'client') return <Navigate to="/espace" replace />
   return children
+}
+
+function RequireClient({ children }: { children: JSX.Element }) {
+  const { user } = useAuth()
+  const location = useLocation()
+  if (!user) return <Navigate to="/login" state={{ from: location }} replace />
+  if (user.role === 'admin') return <Navigate to="/" replace />
+  return children
+}
+
+function LoginRoute() {
+  const { user } = useAuth()
+  if (user?.role === 'admin') return <Navigate to="/" replace />
+  if (user?.role === 'client') return <Navigate to="/espace" replace />
+  return <Login />
 }
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginRoute />} />
+
+      {/* Client space */}
+      <Route
+        path="/espace/*"
+        element={
+          <RequireClient>
+            <ClientSpace />
+          </RequireClient>
+        }
+      />
+
+      {/* Admin space */}
       <Route
         path="/*"
         element={
-          <Protected>
+          <RequireAdmin>
             <Layout>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
@@ -38,7 +67,7 @@ export default function App() {
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Layout>
-          </Protected>
+          </RequireAdmin>
         }
       />
     </Routes>
