@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-cream-100 text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-camel-200 text-ink;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-cream-200 shadow-soft;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-camel-300/60;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-cream-50 hover:bg-ink-soft;
+  }
+  .btn-ghost {
+    @apply btn text-ink-soft hover:bg-cream-100;
+  }
+  .btn-outline {
+    @apply btn border border-cream-300 text-ink-soft hover:bg-cream-100;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .input {
+    @apply w-full rounded-xl border border-cream-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-camel-300 focus:outline-none focus:ring-2 focus:ring-camel-200/50;
+  }
+  .label {
+    @apply text-xs font-semibold uppercase tracking-wide text-ink-muted;
+  }
+  .display {
+    @apply font-serif;
+  }
+}
+
+/* Thin, elegant scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D9BE9C transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #E1D9CB;
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #D9BE9C;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-in {
+  animation: fadeInUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
