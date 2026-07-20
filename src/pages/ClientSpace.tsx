@@ -31,7 +31,7 @@ function ClientMessages({ client }: { client: Client }) {
       <h1 className="mb-5 font-display text-3xl font-semibold text-ink">Messagerie</h1>
       <div className="card flex h-[calc(100vh-13rem)] flex-col overflow-hidden">
         <div className="flex items-center gap-3 border-b border-paper-200 p-4">
-          <Avatar initials="TN" color="#059669" size={42} />
+          <Avatar initials="TN" color="#2563EB" size={42} />
           <div className="min-w-0 flex-1">
             <p className="font-medium text-ink">Thomas Nurit</p>
             <p className="truncate text-xs text-ink-muted">Votre accompagnateur acquisition LinkedIn</p>

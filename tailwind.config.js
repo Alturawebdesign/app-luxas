@@ -4,73 +4,59 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Thomas Nurit — brand vert & noir (acquisition LinkedIn)
+        // Thomas Nurit — refonte « liquid glass » bleu périwinkle
         ink: {
-          DEFAULT: '#0A0F0D',
-          soft: '#232A27',
-          muted: '#697570',
+          DEFAULT: '#1B2A4A',
+          soft: '#3B4B70',
+          muted: '#7C89A6',
         },
         paper: {
-          50: '#FAFBFA',
-          100: '#F3F6F4',
-          200: '#E7ECE9',
-          300: '#D6DED9',
+          50: '#FBFCFF',
+          100: '#EEF2FC',
+          200: '#E1E8F7',
+          300: '#CED9F2',
         },
+        // deep navy (accents sombres)
         forest: {
-          700: '#0F241B',
-          800: '#0A1A13',
-          900: '#06110C',
+          700: '#20305C',
+          800: '#17244A',
+          900: '#0F1A38',
         },
+        // "emerald" est REMAPPÉ en bleu = accent principal de marque
         emerald: {
-          50: '#ECFDF5',
-          100: '#D1FAE5',
-          200: '#A7F3D0',
-          300: '#6EE7B7',
-          400: '#34D399',
-          500: '#10B981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065F46',
+          50: '#EFF4FF',
+          100: '#DDE8FF',
+          200: '#C0D4FE',
+          300: '#97B6FD',
+          400: '#6296FB',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
         },
+        // "lime" remappé en cyan/sky (pop secondaire)
         lime: {
-          300: '#BEF264',
-          400: '#A3E635',
+          100: '#E0F2FE',
+          300: '#7DD3FC',
+          400: '#38BDF8',
         },
       },
       fontFamily: {
-        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 2px 6px -2px rgba(16,40,30,0.05), 0 16px 38px -20px rgba(16,40,30,0.22)',
-        card: '0 2px 8px -3px rgba(16,40,30,0.06), 0 22px 48px -24px rgba(16,40,30,0.28)',
-        glow: '0 8px 24px -6px rgba(16,185,129,0.45)',
-        'glow-lg': '0 16px 44px -10px rgba(16,185,129,0.5)',
-        glass: 'inset 0 1px 0 rgba(255,255,255,0.8), 0 20px 44px -22px rgba(16,40,30,0.22)',
-        'glass-dark': 'inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 60px -24px rgba(0,0,0,0.6)',
-      },
-      backdropBlur: {
-        xs: '2px',
+        soft: '0 2px 8px -3px rgba(30,58,120,0.08), 0 18px 42px -22px rgba(30,58,120,0.3)',
+        card: '0 2px 10px -3px rgba(30,58,120,0.1), 0 26px 52px -26px rgba(30,58,120,0.34)',
+        glow: '0 8px 26px -6px rgba(59,130,246,0.5)',
+        'glow-lg': '0 16px 46px -10px rgba(59,130,246,0.55)',
+        glass: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 22px 48px -24px rgba(30,58,120,0.28)',
       },
       keyframes: {
-        aurora: {
-          '0%': { transform: 'translate3d(0,0,0) scale(1)' },
-          '50%': { transform: 'translate3d(2%,-1.5%,0) scale(1.08)' },
-          '100%': { transform: 'translate3d(-2%,2%,0) scale(1.04)' },
+        fadeInUp: {
+          from: { opacity: '0', transform: 'translateY(8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
-        float: {
-          '0%,100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-6px)' },
-        },
-      },
-      animation: {
-        aurora: 'aurora 24s ease-in-out infinite alternate',
-        float: 'float 6s ease-in-out infinite',
-      },
-      borderRadius: {
-        xl: '1rem',
-        '2xl': '1.25rem',
       },
     },
   },

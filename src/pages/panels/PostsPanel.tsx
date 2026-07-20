@@ -48,17 +48,17 @@ export default function PostsPanel({ client }: { client: Client }) {
             <AreaChart data={client.impressionsSeries} margin={{ left: -14, right: 8, top: 6, bottom: 0 }}>
               <defs>
                 <linearGradient id="imprArea" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#10B981" stopOpacity={0.28} />
-                  <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#3B82F6" stopOpacity={0.28} />
+                  <stop offset="100%" stopColor="#3B82F6" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
-              <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={6} />
+              <CartesianGrid strokeDasharray="4 4" stroke="rgba(30,58,120,0.06)" vertical={false} />
+              <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} dy={6} />
               <Tooltip
-                contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }}
+                contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }}
                 formatter={(v: number) => [formatNumber(v), 'Impressions']}
               />
-              <Area type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} fill="url(#imprArea)" dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+              <Area type="monotone" dataKey="value" stroke="#3B82F6" strokeWidth={3} fill="url(#imprArea)" dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -76,15 +76,15 @@ export default function PostsPanel({ client }: { client: Client }) {
           <div className="h-44">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={client.engagementWeek} margin={{ left: -20, right: 4, top: 4, bottom: 0 }}>
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={4} />
+                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} dy={4} />
                 <Tooltip
-                  cursor={{ fill: 'rgba(16,185,129,0.06)' }}
-                  contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }}
+                  cursor={{ fill: 'rgba(59,130,246,0.06)' }}
+                  contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }}
                   formatter={(v: number, n) => [v, n === 'comments' ? 'Commentaires' : 'Objectif']}
                 />
                 <Bar dataKey="comments" radius={[8, 8, 8, 8]} maxBarSize={30}>
                   {client.engagementWeek.map((d, i) => (
-                    <Cell key={i} fill={d.comments >= d.target ? '#10B981' : '#A7F3D0'} />
+                    <Cell key={i} fill={d.comments >= d.target ? '#3B82F6' : '#BFDBFE'} />
                   ))}
                 </Bar>
               </BarChart>
@@ -94,7 +94,7 @@ export default function PostsPanel({ client }: { client: Client }) {
 
         <div className="card flex flex-col justify-center gap-4 p-6">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-300/30 text-emerald-700">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600">
               <Flame size={22} />
             </span>
             <div>

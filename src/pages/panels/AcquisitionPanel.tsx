@@ -116,15 +116,15 @@ export default function AcquisitionPanel({ client }: { client: Client }) {
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={client.acquisitionTrend} margin={{ left: -18, right: 6, top: 6, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
-                <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={4} />
-                <YAxis yAxisId="l" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 11 }} tickFormatter={(v) => compact(v)} />
-                <YAxis yAxisId="r" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 11 }} />
-                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} cursor={{ fill: 'rgba(16,185,129,0.05)' }} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(30,58,120,0.06)" vertical={false} />
+                <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} dy={4} />
+                <YAxis yAxisId="l" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 11 }} tickFormatter={(v) => compact(v)} />
+                <YAxis yAxisId="r" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 11 }} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }} cursor={{ fill: 'rgba(59,130,246,0.05)' }} />
                 <Legend wrapperStyle={{ fontSize: 12, paddingTop: 8 }} iconType="circle" />
-                <Bar yAxisId="l" dataKey="impressions" name="Impressions" fill="#A7F3D0" radius={[8, 8, 8, 8]} maxBarSize={22} />
-                <Line yAxisId="r" dataKey="calls" name="Appels" stroke="#10B981" strokeWidth={3} dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
-                <Line yAxisId="r" dataKey="deals" name="Ventes" stroke="#0A0F0D" strokeWidth={2} strokeDasharray="4 3" dot={false} />
+                <Bar yAxisId="l" dataKey="impressions" name="Impressions" fill="#BFDBFE" radius={[8, 8, 8, 8]} maxBarSize={22} />
+                <Line yAxisId="r" dataKey="calls" name="Appels" stroke="#3B82F6" strokeWidth={3} dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                <Line yAxisId="r" dataKey="deals" name="Ventes" stroke="#334155" strokeWidth={2} strokeDasharray="4 3" dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
           </div>

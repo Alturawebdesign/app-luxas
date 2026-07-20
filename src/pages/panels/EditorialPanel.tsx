@@ -8,11 +8,11 @@ const WEEKDAYS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
 const MONTHS = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
 
 const FORMAT_COLOR: Record<PostFormat, string> = {
-  Texte: '#059669',
-  Carrousel: '#0A0F0D',
-  Image: '#34D399',
-  Vidéo: '#A3E635',
-  Sondage: '#6EE7B7',
+  Texte: '#2563EB',
+  Carrousel: '#334155',
+  Image: '#60A5FA',
+  Vidéo: '#38BDF8',
+  Sondage: '#93C5FD',
 }
 
 export default function EditorialPanel({ client }: { client: Client }) {

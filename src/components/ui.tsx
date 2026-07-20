@@ -2,21 +2,15 @@ import type { ReactNode } from 'react'
 import { TrendingUp, TrendingDown } from 'lucide-react'
 
 /* ---------------------------------- Logo ----------------------------------- */
-export function Logo({ size = 40, dark = false }: { size?: number; dark?: boolean }) {
+export function Logo({ size = 40 }: { size?: number; dark?: boolean }) {
   return (
     <div
-      className="flex items-center justify-center rounded-xl"
-      style={{ width: size, height: size, background: dark ? '#06110C' : '#0A0F0D' }}
+      className="flex items-center justify-center rounded-2xl shadow-glow"
+      style={{ width: size, height: size, background: 'linear-gradient(140deg, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)' }}
     >
-      <svg width={size * 0.62} height={size * 0.62} viewBox="0 0 64 64" fill="none">
-        <path
-          d="M12 42 L26 20 L33 31 L42 16 L52 42"
-          stroke="#10B981"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="42" cy="16" r="4" fill="#A3E635" />
+      <svg width={size * 0.6} height={size * 0.6} viewBox="0 0 64 64" fill="none">
+        <path d="M12 42 L26 20 L33 31 L42 16 L52 42" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="42" cy="16" r="4" fill="#7DD3FC" />
       </svg>
     </div>
   )
@@ -58,25 +52,25 @@ function shade(hex: string, percent: number) {
 
 /* -------------------------------- StatusBadge ------------------------------ */
 const STATUS_STYLES: Record<string, string> = {
-  // client
-  Actif: 'bg-emerald-100 text-emerald-700',
-  Onboarding: 'bg-lime-300/30 text-emerald-800',
+  // client — succès en vert
+  Actif: 'bg-green-100 text-green-700',
+  Onboarding: 'bg-emerald-100 text-emerald-700',
   'En pause': 'bg-paper-200 text-ink-muted',
-  Terminé: 'bg-ink/5 text-ink-soft',
+  Terminé: 'bg-slate-200/70 text-slate-600',
   // posts
-  Publié: 'bg-emerald-100 text-emerald-700',
-  Programmé: 'bg-sky-100 text-sky-700',
+  Publié: 'bg-green-100 text-green-700',
+  Programmé: 'bg-emerald-100 text-emerald-700',
   Brouillon: 'bg-amber-100 text-amber-700',
   Idée: 'bg-paper-200 text-ink-muted',
   // phase / todo
-  Terminée: 'bg-emerald-100 text-emerald-700',
-  'En cours': 'bg-lime-300/30 text-emerald-800',
+  Terminée: 'bg-green-100 text-green-700',
+  'En cours': 'bg-emerald-100 text-emerald-700',
   'À venir': 'bg-paper-200 text-ink-muted',
-  Fait: 'bg-emerald-100 text-emerald-700',
+  Fait: 'bg-green-100 text-green-700',
   'À faire': 'bg-paper-200 text-ink-muted',
   // documents
-  Signé: 'bg-emerald-100 text-emerald-700',
-  Payé: 'bg-emerald-100 text-emerald-700',
+  Signé: 'bg-green-100 text-green-700',
+  Payé: 'bg-green-100 text-green-700',
   'En attente': 'bg-amber-100 text-amber-700',
   Disponible: 'bg-sky-100 text-sky-700',
 }
@@ -96,7 +90,7 @@ export function Delta({ value, suffix = '%' }: { value: number; suffix?: string 
   return (
     <span
       className={`inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-xs font-semibold ${
-        up ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'
+        up ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'
       }`}
     >
       {up ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
@@ -137,7 +131,7 @@ export function ProgressRing({
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E7ECE9" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#DCE5F5" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -152,8 +146,8 @@ export function ProgressRing({
         />
         <defs>
           <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#34D399" />
-            <stop offset="100%" stopColor="#059669" />
+            <stop offset="0%" stopColor="#60A5FA" />
+            <stop offset="100%" stopColor="#2563EB" />
           </linearGradient>
         </defs>
       </svg>
