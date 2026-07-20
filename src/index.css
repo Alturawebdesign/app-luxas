@@ -8,58 +8,61 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-cream-100 text-ink font-sans antialiased;
+    @apply bg-paper-100 text-ink font-sans antialiased;
   }
   ::selection {
-    @apply bg-camel-200 text-ink;
+    @apply bg-emerald-200 text-forest-900;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-white rounded-2xl border border-cream-200 shadow-soft;
+    @apply bg-white rounded-2xl border border-paper-200 shadow-soft;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-camel-300/60;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/50;
   }
   .btn-primary {
-    @apply btn bg-ink text-cream-50 hover:bg-ink-soft;
+    @apply btn bg-emerald-500 text-white hover:bg-emerald-600;
+  }
+  .btn-dark {
+    @apply btn bg-ink text-paper-50 hover:bg-forest-700;
   }
   .btn-ghost {
-    @apply btn text-ink-soft hover:bg-cream-100;
+    @apply btn text-ink-soft hover:bg-paper-100;
   }
   .btn-outline {
-    @apply btn border border-cream-300 text-ink-soft hover:bg-cream-100;
+    @apply btn border border-paper-300 text-ink-soft hover:bg-paper-100;
   }
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
   }
   .input {
-    @apply w-full rounded-xl border border-cream-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-camel-300 focus:outline-none focus:ring-2 focus:ring-camel-200/50;
+    @apply w-full rounded-xl border border-paper-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200/60;
   }
   .label {
     @apply text-xs font-semibold uppercase tracking-wide text-ink-muted;
   }
-  .display {
-    @apply font-serif;
+  .stat {
+    @apply font-display tabular-nums;
   }
 }
 
-/* Thin, elegant scrollbars */
+/* Scrollbars */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #D9BE9C transparent;
+  scrollbar-color: #C7D2CC transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: #E1D9CB;
+  background: #D6DED9;
   border-radius: 999px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #D9BE9C;
+  background: #A7F3D0;
 }
 
 @keyframes fadeInUp {

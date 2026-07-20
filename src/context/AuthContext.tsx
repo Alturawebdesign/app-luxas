@@ -28,15 +28,15 @@ interface AuthContextValue {
   logout: () => void
 }
 
-const LILIA: AdminUser = {
+const THOMAS: AdminUser = {
   role: 'admin',
-  name: 'Lilia Maksimtchouk',
-  title: 'Experte en image',
-  email: 'lilia@thelookbylilia.com',
-  initials: 'LM',
+  name: 'Thomas Nurit',
+  title: 'Acquisition LinkedIn',
+  email: 'thomas@thomasnurit.com',
+  initials: 'TN',
 }
 
-const STORAGE_KEY = 'tlbl-auth'
+const STORAGE_KEY = 'tn-auth'
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined)
 
@@ -77,8 +77,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const loginAdmin = (email: string, password: string) => {
     if (email.trim() && password.trim()) {
-      persist(LILIA)
-      setUser(LILIA)
+      persist(THOMAS)
+      setUser(THOMAS)
       return true
     }
     return false

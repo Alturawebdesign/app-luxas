@@ -4,10 +4,8 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Clients from './pages/Clients'
 import ClientDetail from './pages/ClientDetail'
-import CalendarPage from './pages/CalendarPage'
+import ClientsData from './pages/ClientsData'
 import Messages from './pages/Messages'
-import DocumentsPage from './pages/DocumentsPage'
-import Settings from './pages/Settings'
 import ClientSpace from './pages/ClientSpace'
 import { useAuth } from './context/AuthContext'
 
@@ -39,17 +37,10 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<LoginRoute />} />
 
-      {/* Client space */}
-      <Route
-        path="/espace/*"
-        element={
-          <RequireClient>
-            <ClientSpace />
-          </RequireClient>
-        }
-      />
+      {/* Espace client */}
+      <Route path="/espace/*" element={<RequireClient><ClientSpace /></RequireClient>} />
 
-      {/* Admin space */}
+      {/* Espace admin */}
       <Route
         path="/*"
         element={
@@ -59,11 +50,9 @@ export default function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/clients" element={<Clients />} />
                 <Route path="/clients/:id/*" element={<ClientDetail />} />
-                <Route path="/calendrier" element={<CalendarPage />} />
+                <Route path="/datas" element={<ClientsData />} />
                 <Route path="/messagerie" element={<Messages />} />
                 <Route path="/messagerie/:id" element={<Messages />} />
-                <Route path="/documents" element={<DocumentsPage />} />
-                <Route path="/parametres" element={<Settings />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Layout>

@@ -8,6 +8,8 @@ const MONTHS_LONG = [
 ]
 const DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 
+export const TODAY = '2026-07-20T12:00:00'
+
 export function formatDate(iso: string): string {
   const d = new Date(iso)
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
@@ -31,8 +33,18 @@ export function formatMoney(n: number): string {
   }).format(n)
 }
 
+export function compact(n: number): string {
+  if (n >= 1000000) return `${(n / 1000000).toFixed(n % 1000000 === 0 ? 0 : 1)}M`
+  if (n >= 1000) return `${(n / 1000).toFixed(n % 1000 === 0 ? 0 : 1)}k`
+  return `${n}`
+}
+
+export function formatNumber(n: number): string {
+  return new Intl.NumberFormat('fr-FR').format(n)
+}
+
 export function timeAgo(iso: string): string {
-  const now = new Date('2026-07-09T12:00:00').getTime()
+  const now = new Date(TODAY).getTime()
   const then = new Date(iso).getTime()
   const diff = Math.round((now - then) / 1000)
   if (diff < 60) return "à l'instant"

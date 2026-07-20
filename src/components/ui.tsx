@@ -1,12 +1,26 @@
 import type { ReactNode } from 'react'
-import type {
-  ClientStatus,
-  SessionStatus,
-  DocumentStatus,
-  LookStatus,
-  WardrobeStatus,
-  MilestoneStatus,
-} from '../data/types'
+import { TrendingUp, TrendingDown } from 'lucide-react'
+
+/* ---------------------------------- Logo ----------------------------------- */
+export function Logo({ size = 40, dark = false }: { size?: number; dark?: boolean }) {
+  return (
+    <div
+      className="flex items-center justify-center rounded-xl"
+      style={{ width: size, height: size, background: dark ? '#06110C' : '#0A0F0D' }}
+    >
+      <svg width={size * 0.62} height={size * 0.62} viewBox="0 0 64 64" fill="none">
+        <path
+          d="M12 42 L26 20 L33 31 L42 16 L52 42"
+          stroke="#10B981"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="42" cy="16" r="4" fill="#A3E635" />
+      </svg>
+    </div>
+  )
+}
 
 /* ---------------------------------- Avatar --------------------------------- */
 export function Avatar({
@@ -20,12 +34,12 @@ export function Avatar({
 }) {
   return (
     <div
-      className="flex shrink-0 items-center justify-center rounded-full font-serif font-medium text-cream-50"
+      className="flex shrink-0 items-center justify-center rounded-xl font-display font-semibold text-white"
       style={{
         width: size,
         height: size,
-        background: `linear-gradient(135deg, ${color} 0%, ${shade(color, -18)} 100%)`,
-        fontSize: size * 0.38,
+        background: `linear-gradient(135deg, ${color} 0%, ${shade(color, -16)} 100%)`,
+        fontSize: size * 0.36,
       }}
     >
       {initials}
@@ -43,46 +57,52 @@ function shade(hex: string, percent: number) {
 }
 
 /* -------------------------------- StatusBadge ------------------------------ */
-type AnyStatus =
-  | ClientStatus
-  | SessionStatus
-  | DocumentStatus
-  | LookStatus
-  | WardrobeStatus
-  | MilestoneStatus
-
 const STATUS_STYLES: Record<string, string> = {
-  Actif: 'bg-sage-100 text-sage-600',
-  Onboarding: 'bg-camel-50 text-camel-600',
-  'En pause': 'bg-cream-200 text-ink-muted',
+  // client
+  Actif: 'bg-emerald-100 text-emerald-700',
+  Onboarding: 'bg-lime-300/30 text-emerald-800',
+  'En pause': 'bg-paper-200 text-ink-muted',
   Terminé: 'bg-ink/5 text-ink-soft',
-  // sessions
-  'À venir': 'bg-camel-50 text-camel-600',
-  Réalisée: 'bg-sage-100 text-sage-600',
-  Annulée: 'bg-red-50 text-red-500',
+  // posts
+  Publié: 'bg-emerald-100 text-emerald-700',
+  Programmé: 'bg-sky-100 text-sky-700',
+  Brouillon: 'bg-amber-100 text-amber-700',
+  Idée: 'bg-paper-200 text-ink-muted',
+  // phase / todo
+  Terminée: 'bg-emerald-100 text-emerald-700',
+  'En cours': 'bg-lime-300/30 text-emerald-800',
+  'À venir': 'bg-paper-200 text-ink-muted',
+  Fait: 'bg-emerald-100 text-emerald-700',
+  'À faire': 'bg-paper-200 text-ink-muted',
   // documents
-  Signé: 'bg-sage-100 text-sage-600',
-  Payé: 'bg-sage-100 text-sage-600',
-  'En attente': 'bg-amber-50 text-amber-600',
-  Envoyé: 'bg-camel-50 text-camel-600',
-  // looks
-  Validé: 'bg-sage-100 text-sage-600',
-  Proposé: 'bg-camel-50 text-camel-600',
-  'À retravailler': 'bg-amber-50 text-amber-600',
-  // wardrobe
-  Acquis: 'bg-sage-100 text-sage-600',
-  'À acquérir': 'bg-camel-50 text-camel-600',
-  'Dans le dressing': 'bg-cream-200 text-ink-muted',
-  // milestone
-  Fait: 'bg-sage-100 text-sage-600',
-  'En cours': 'bg-camel-50 text-camel-600',
+  Signé: 'bg-emerald-100 text-emerald-700',
+  Payé: 'bg-emerald-100 text-emerald-700',
+  'En attente': 'bg-amber-100 text-amber-700',
+  Disponible: 'bg-sky-100 text-sky-700',
 }
 
-export function StatusBadge({ status }: { status: AnyStatus }) {
+export function StatusBadge({ status }: { status: string }) {
   return (
-    <span className={`chip ${STATUS_STYLES[status] ?? 'bg-cream-200 text-ink-muted'}`}>
+    <span className={`chip ${STATUS_STYLES[status] ?? 'bg-paper-200 text-ink-muted'}`}>
       <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
       {status}
+    </span>
+  )
+}
+
+/* ---------------------------------- Delta ---------------------------------- */
+export function Delta({ value, suffix = '%' }: { value: number; suffix?: string }) {
+  const up = value >= 0
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-xs font-semibold ${
+        up ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'
+      }`}
+    >
+      {up ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
+      {up ? '+' : ''}
+      {value}
+      {suffix}
     </span>
   )
 }
@@ -90,9 +110,9 @@ export function StatusBadge({ status }: { status: AnyStatus }) {
 /* -------------------------------- ProgressBar ------------------------------ */
 export function ProgressBar({ value, className = '' }: { value: number; className?: string }) {
   return (
-    <div className={`h-2 w-full overflow-hidden rounded-full bg-cream-200 ${className}`}>
+    <div className={`h-2 w-full overflow-hidden rounded-full bg-paper-200 ${className}`}>
       <div
-        className="h-full rounded-full bg-gradient-to-r from-camel-300 to-camel-500 transition-all duration-500"
+        className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600 transition-all duration-500"
         style={{ width: `${Math.max(0, Math.min(100, value))}%` }}
       />
     </div>
@@ -117,7 +137,7 @@ export function ProgressRing({
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#EDE8DF" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E7ECE9" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -132,46 +152,14 @@ export function ProgressRing({
         />
         <defs>
           <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#C7A277" />
-            <stop offset="100%" stopColor="#8A5E3B" />
+            <stop offset="0%" stopColor="#34D399" />
+            <stop offset="100%" stopColor="#059669" />
           </linearGradient>
         </defs>
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        {label ?? <span className="font-serif text-lg text-ink">{value}%</span>}
+        {label ?? <span className="stat text-lg text-ink">{value}%</span>}
       </div>
-    </div>
-  )
-}
-
-/* ---------------------------------- Section -------------------------------- */
-export function SectionTitle({
-  title,
-  subtitle,
-  action,
-}: {
-  title: string
-  subtitle?: string
-  action?: ReactNode
-}) {
-  return (
-    <div className="mb-5 flex items-end justify-between gap-4">
-      <div>
-        <h2 className="font-serif text-xl text-ink">{title}</h2>
-        {subtitle && <p className="mt-0.5 text-sm text-ink-muted">{subtitle}</p>}
-      </div>
-      {action}
-    </div>
-  )
-}
-
-/* ----------------------------------- Empty --------------------------------- */
-export function EmptyState({ icon, title, hint }: { icon: ReactNode; title: string; hint?: string }) {
-  return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-cream-300 py-14 text-center">
-      <div className="mb-3 text-camel-300">{icon}</div>
-      <p className="font-medium text-ink-soft">{title}</p>
-      {hint && <p className="mt-1 text-sm text-ink-muted">{hint}</p>}
     </div>
   )
 }

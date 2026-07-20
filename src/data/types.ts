@@ -1,72 +1,84 @@
 export type ClientStatus = 'Onboarding' | 'Actif' | 'En pause' | 'Terminé'
 
-export type SessionType = 'Audit image' | 'Visio' | 'Journée shopping' | 'Sélection en ligne' | 'Bilan'
-export type SessionStatus = 'À venir' | 'Réalisée' | 'Annulée'
+export type PostStatus = 'Publié' | 'Programmé' | 'Brouillon' | 'Idée'
+export type PostFormat = 'Texte' | 'Carrousel' | 'Image' | 'Vidéo' | 'Sondage'
 
-export type DocumentType = 'Contrat' | 'Facture' | 'Devis' | 'Guide' | 'Audit PDF' | 'Autre'
-export type DocumentStatus = 'Signé' | 'En attente' | 'Payé' | 'Envoyé'
+export type PhaseStatus = 'Terminée' | 'En cours' | 'À venir'
+export type TodoStatus = 'Fait' | 'En cours' | 'À faire'
 
-export type LookStatus = 'Proposé' | 'Validé' | 'À retravailler'
-export type WardrobeStatus = 'À acquérir' | 'Acquis' | 'Dans le dressing'
-export type MilestoneStatus = 'Fait' | 'En cours' | 'À venir'
+export type DocumentType = 'Contrat' | 'Facture' | 'Playbook' | 'Template' | 'Rapport' | 'Ressource'
+export type DocumentStatus = 'Signé' | 'Payé' | 'En attente' | 'Disponible'
 
 export interface Kpis {
-  imageScoreBefore: number // /10
-  imageScoreAfter: number // /10
-  progress: number // 0-100 (programme 30 jours)
-  looksValidated: number
-  looksTotal: number
-  wardrobePieces: number
-  sessionsCompleted: number
-  sessionsTotal: number
-  satisfaction: number // 0-100
-  confidence: number // 0-100 (confiance ressentie)
+  followers: number
+  followersGrowth: number // last 30d
+  impressions: number // last 30d
+  impressionsGrowth: number // % vs prev 30d
+  posts: number // last 30d
+  engagementRate: number // %
+  profileViews: number // last 30d
+  qualifiedCallsPerWeek: number
+  callsBooked: number // last 30d
+  dealsWon: number // last 30d
+  pipelineValue: number // €
+  closeRate: number // %
 }
 
-export interface AuditData {
-  summary: string
-  morphology: string
-  colorimetry: string
-  currentStyle: string
-  objectives: string[]
-  strengths: string[]
-  toImprove: string[]
-  palette: string[] // hex colors recommended
-}
-
-export interface Look {
+export interface Post {
   id: string
+  date: string // ISO
+  hook: string
+  format: PostFormat
+  status: PostStatus
+  impressions: number
+  likes: number
+  comments: number
+  reposts: number
+  profileVisits: number
+}
+
+export interface EngagementDay {
+  day: string // "Lun"
+  comments: number // commentaires postés
+  target: number // objectif du jour
+}
+
+export interface AcquisitionStage {
+  label: string
+  value: number
+}
+
+export interface AcquisitionPoint {
+  week: string
+  impressions: number
+  calls: number
+  deals: number
+}
+
+export interface Todo {
+  id: string
+  label: string
+  status: TodoStatus
+}
+
+export interface Phase {
+  id: string
+  index: number
   title: string
-  occasion: string
-  pieces: string[]
-  status: LookStatus
-  note?: string
+  goal: string
+  status: PhaseStatus
+  progress: number // 0-100
+  todos: Todo[]
 }
 
-export interface WardrobeItem {
+export interface EditorialItem {
   id: string
-  category: 'Haut' | 'Bas' | 'Veste' | 'Chaussures' | 'Accessoire' | 'Pièce forte'
-  name: string
-  brand: string
-  price: number
-  status: WardrobeStatus
-}
-
-export interface Milestone {
-  day: number
-  title: string
-  detail: string
-  status: MilestoneStatus
-}
-
-export interface Session {
-  id: string
-  clientId: string
-  type: SessionType
   date: string // ISO
   time: string
-  status: SessionStatus
-  location?: string
+  title: string
+  format: PostFormat
+  pillar: string // pilier de contenu
+  status: PostStatus
 }
 
 export interface ClientDocument {
@@ -80,7 +92,7 @@ export interface ClientDocument {
 
 export interface Message {
   id: string
-  from: 'lilia' | 'client'
+  from: 'thomas' | 'client'
   text: string
   time: string // ISO
   read: boolean
@@ -92,20 +104,23 @@ export interface Client {
   lastName: string
   company: string
   role: string
+  niche: string
   email: string
   phone: string
-  city: string
   avatarColor: string
   status: ClientStatus
-  formule: string
+  offer: string
   startDate: string // ISO
-  nextSession?: string // ISO
+  currentPhase: number
   kpis: Kpis
-  audit: AuditData
-  looks: Look[]
-  wardrobe: WardrobeItem[]
-  program: Milestone[]
-  sessions: Session[]
+  posts: Post[]
+  engagementWeek: EngagementDay[]
+  engagementStreak: number // jours consécutifs de routine
+  acquisitionFunnel: AcquisitionStage[]
+  acquisitionTrend: AcquisitionPoint[]
+  impressionsSeries: { label: string; value: number }[]
+  phases: Phase[]
+  editorial: EditorialItem[]
   documents: ClientDocument[]
   messages: Message[]
 }

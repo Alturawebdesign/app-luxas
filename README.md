@@ -1,93 +1,52 @@
-# Portail client — The Look by Lilia
+# Portail client — Thomas Nurit
 
-Portail d'administration pour **Lilia Maksimtchouk** (_The Look by Lilia_), experte en image
-pour entrepreneurs. Il centralise le suivi complet des clients accompagnés dans la prestation
-« Transformation image en 30 jours » : audit du dressing, colorimétrie, composition de looks,
-garde-robe stratégique, séances (WhatsApp + visio + journée shopping + sélection en ligne) et
-administratif.
+Portail d'accompagnement pour **Thomas Nurit**, qui aide les solopreneurs B2B à construire un
+**système d'acquisition sur LinkedIn** (contenu + routine d'engagement + GTM + IA). Deux espaces
+avec authentification par rôle, dans une identité **vert & noir**.
 
-Le portail propose **deux espaces** avec une authentification par rôle :
+## ✨ Espaces
 
-- **Espace admin** (Lilia) — suivi complet de tous les clients.
-- **Espace client** — chaque client accède à son propre portail (sa transformation,
-  son programme, ses documents, sa messagerie avec Lilia), sans les fonctions admin.
+Sur l'écran de connexion, un sélecteur **Espace admin / Espace client** permet de basculer (démo).
 
-Sur l'écran de connexion, un sélecteur **Espace admin / Espace client** permet de basculer
-entre les deux (démo).
+### 👤 Espace client (le solopreneur accompagné)
+- **Dashboard** — impressions, engagement, appels qualifiés, clients signés, progression de
+  l'accompagnement, prochain post, mot de Thomas.
+- **Calendrier éditorial** — pipeline de contenu LinkedIn (vue mensuelle + agenda).
+- **Posts & engagement** — datas LinkedIn des posts (impressions, top 5) + **routine
+  d'engagement** (objectifs quotidiens, streak).
+- **Acquisition** — funnel des impressions aux clients signés + courbe d'acquisition + pipeline.
+- **Accompagnement** — suivi **par phases** avec **to-do** (4 phases : Fondations, Contenu,
+  Engagement, Système d'acquisition).
+- **Documents** — contrats, factures, playbooks, templates, rapports.
+- **Messagerie** — conversation avec Thomas.
 
-## ✨ Fonctionnalités — Espace admin
+### 🛠️ Espace admin (Thomas)
+- **Dashboard** — KPI agrégés, impressions cumulées, contenu à venir, suivi clients.
+- **Clients** — liste avec les **datas** de chaque client (impressions, engagement, appels,
+  clients signés, phase) — vues grille/tableau.
+- **Datas clients** — analytics agrégées sur le portefeuille : impressions par client, funnel
+  global, classement, top 5 posts tous clients confondus.
+- **Messagerie** — toutes les conversations clients.
 
-- **Authentification par rôle** — espace réservé à Lilia (démo : n'importe quels identifiants).
-- **Barre de navigation latérale** vers toutes les pages du portail.
-- **Tableau de bord** — KPI agrégés, progression du score d'image, prochaines séances, suivi clients.
-- **Liste des clients** avec KPI liés à la prestation :
-  - Score d'image avant → après
-  - Progression du programme 30 jours
-  - Looks validés & pièces de garde-robe
-  - Séances réalisées & taux de satisfaction / confiance
-  - Vues **grille** et **tableau**, recherche et filtres par statut.
-- **Fiche client** avec tout le suivi de la prestation, en onglets :
-  - **Vue d'ensemble** — KPI, transformation avant/après, profil image (radar), objectifs.
-  - **Audit image** — diagnostic, morphologie, colorimétrie, palette recommandée, points forts / à travailler.
-  - **Lookbook** — tenues composées par situation, avec statut de validation.
-  - **Garde-robe** — pièces stratégiques, budget, statut d'acquisition.
-  - **Programme 30 jours** — timeline des étapes de transformation.
-  - **Séances** — agenda audit / visio / shopping / sélection / bilan.
-  - **Documents** — contrats, factures, devis, livrables.
-- **Calendrier** global de toutes les séances (vue mensuelle + agenda).
-- **Messagerie** — conversations par client, envoi de messages (démo).
-- **Documents** — vue administrative globale (facturé / encaissé / en attente).
-- **Paramètres** — profil, notifications, facturation, sécurité.
+Chaque fiche client (côté admin) reprend les mêmes datas en onglets : vue d'ensemble, posts &
+engagement, acquisition, accompagnement, documents.
 
-## 👤 Fonctionnalités — Espace client
+## 🎨 Stack
 
-Quand un client se connecte (`/espace`), il retrouve, avec sa propre barre de navigation latérale :
-
-- **Accueil** — message de bienvenue personnalisé, ses KPI, sa progression, sa prochaine séance,
-  un mot de Lilia et son dernier look validé.
-- **Mon programme** — la timeline de sa transformation en 30 jours.
-- **Mon audit** — son diagnostic image (morphologie, colorimétrie, palette, objectifs).
-- **Mon lookbook** — ses tenues composées par situation.
-- **Ma garde-robe** — ses pièces stratégiques et leur budget.
-- **Mes séances** — son agenda audit / visio / shopping / sélection / bilan.
-- **Mes documents** — ses contrats, factures et livrables.
-- **Messagerie** — sa conversation avec Lilia.
-
-## 🛠️ Stack
-
-- [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [React Router](https://reactrouter.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Recharts](https://recharts.org/) (graphiques)
-- [Lucide](https://lucide.dev/) (icônes)
+React 18 · TypeScript · Vite · Tailwind CSS · React Router · Recharts · Lucide.
+Identité vert & noir, typo Space Grotesk / Inter.
 
 ## 🚀 Démarrage
 
 ```bash
 npm install
-npm run dev      # serveur de développement (http://localhost:5173)
-npm run build    # build de production
-npm run preview  # prévisualise le build
-```
-
-## 📁 Structure
-
-```
-src/
-├── components/     # Layout, Sidebar, composants UI réutilisables
-├── context/        # AuthContext (auth admin de démo)
-├── data/           # types + données de démonstration (4 clients)
-├── lib/            # utilitaires de formatage (dates, montants)
-├── pages/          # pages principales
-│   └── client/     # onglets de la fiche client
-├── App.tsx         # routes
-└── main.tsx        # point d'entrée
+npm run dev      # http://localhost:5173
+npm run build
+npm run preview
 ```
 
 ## 📝 Note
 
-Les données affichées sont **fictives** et servent à illustrer le portail. L'authentification
-est une démo : cliquez simplement sur « Se connecter ». Pour brancher une vraie base de données
-et une authentification réelle, la couche `src/data` peut être remplacée par des appels API
-(par ex. Supabase).
+Données de démonstration (4 solopreneurs B2B fictifs). L'authentification est une démo :
+choisissez un espace et cliquez sur « Se connecter ». La couche `src/data` peut être remplacée
+par des appels API (ex. Supabase) pour une mise en production.
