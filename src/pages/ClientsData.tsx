@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Cell } from 'recharts'
-import { Eye, PhoneCall, Handshake, Wallet, Trophy, Medal } from 'lucide-react'
+import { Eye, PhoneCall, Handshake, Wallet, Trophy, Medal, Send, MessageSquare, Percent } from 'lucide-react'
 import { clients, fullName, initials } from '../data/clients'
 import { compact, formatMoney, formatNumber, formatShort } from '../lib/format'
 import { Avatar } from '../components/ui'
@@ -29,11 +29,22 @@ export default function ClientsData() {
     .sort((a, b) => b.impressions - a.impressions)
     .slice(0, 5)
 
+  const totalRequests = clients.reduce((s, c) => s + c.prospection.requestsSent, 0)
+  const totalMessages = clients.reduce((s, c) => s + c.prospection.messagesSent, 0)
+  const totalSales = clients.reduce((s, c) => s + c.prospection.sales, 0)
+  const avgClose = Math.round(clients.reduce((s, c) => s + c.prospection.closeRate, 0) / clients.length)
+
   const stats = [
     { icon: Eye, label: 'Impressions / mois', value: compact(totalImpr) },
     { icon: PhoneCall, label: 'Appels bookés / 30j', value: `${totalCalls}` },
     { icon: Handshake, label: 'Clients signés / 30j', value: `${totalDeals}` },
     { icon: Wallet, label: 'Pipeline généré', value: formatMoney(totalPipeline) },
+  ]
+  const prospectStats = [
+    { icon: Send, label: 'Demandes envoyées / 30j', value: formatNumber(totalRequests) },
+    { icon: MessageSquare, label: 'Messages envoyés / 30j', value: formatNumber(totalMessages) },
+    { icon: Handshake, label: 'Ventes / 30j', value: `${totalSales}` },
+    { icon: Percent, label: 'Closing moyen', value: `${avgClose}%` },
   ]
 
   return (
@@ -51,6 +62,22 @@ export default function ClientsData() {
             <p className="text-xs text-ink-muted">{s.label}</p>
           </div>
         ))}
+      </div>
+
+      <div>
+        <div className="mb-3 flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-emerald-500" />
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-ink-muted">Prospection — tous clients</h3>
+        </div>
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {prospectStats.map((s) => (
+            <div key={s.label} className="card p-5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"><s.icon size={17} /></span>
+              <p className="stat mt-3 text-2xl text-ink">{s.value}</p>
+              <p className="text-xs text-ink-muted">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">

@@ -24,10 +24,11 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col bg-forest-900 text-paper-100 transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-white/10 bg-forest-900/80 text-paper-100 shadow-glass-dark backdrop-blur-2xl transition-transform duration-300 lg:translate-x-0 ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-emerald-500/10 via-transparent to-lime-400/5" />
         {/* Brand */}
         <div className="flex items-center justify-between px-5 pb-2 pt-6">
           <div className="flex items-center gap-3">

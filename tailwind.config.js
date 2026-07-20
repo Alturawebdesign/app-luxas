@@ -45,7 +45,28 @@ export default {
       boxShadow: {
         soft: '0 1px 3px rgba(10,15,13,0.04), 0 8px 24px -12px rgba(10,15,13,0.10)',
         card: '0 1px 2px rgba(10,15,13,0.05), 0 12px 32px -16px rgba(10,15,13,0.16)',
-        glow: '0 0 0 1px rgba(16,185,129,0.18), 0 8px 30px -8px rgba(16,185,129,0.35)',
+        glow: '0 0 0 1px rgba(16,185,129,0.25), 0 10px 34px -8px rgba(16,185,129,0.5)',
+        'glow-lg': '0 0 0 1px rgba(16,185,129,0.3), 0 20px 60px -12px rgba(16,185,129,0.55)',
+        glass: 'inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,15,13,0.04), 0 20px 44px -22px rgba(6,17,12,0.45)',
+        'glass-dark': 'inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 60px -24px rgba(0,0,0,0.6)',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      keyframes: {
+        aurora: {
+          '0%': { transform: 'translate3d(0,0,0) scale(1)' },
+          '50%': { transform: 'translate3d(2%,-1.5%,0) scale(1.08)' },
+          '100%': { transform: 'translate3d(-2%,2%,0) scale(1.04)' },
+        },
+        float: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+      },
+      animation: {
+        aurora: 'aurora 24s ease-in-out infinite alternate',
+        float: 'float 6s ease-in-out infinite',
       },
       borderRadius: {
         xl: '1rem',

@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
 
       <div className="lg:pl-[260px]">
-        <header className="sticky top-0 z-20 border-b border-paper-200 bg-paper-100/85 backdrop-blur-md">
+        <header className="sticky top-0 z-20 border-b border-white/50 bg-white/40 backdrop-blur-xl">
           <div className="flex h-16 items-center gap-3 px-4 sm:px-6 lg:px-8">
             <button className="btn-ghost -ml-2 lg:hidden" onClick={() => setMenuOpen(true)} aria-label="Menu">
               <Menu size={20} />

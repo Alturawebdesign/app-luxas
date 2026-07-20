@@ -43,6 +43,17 @@ export interface EngagementDay {
   target: number // objectif du jour
 }
 
+export interface Prospection {
+  requestsSent: number // demandes de connexion envoyées (30j)
+  messagesSent: number // messages envoyés (30j)
+  calls: number // nombre de calls (30j)
+  sales: number // nombre de ventes (30j)
+  connectionRate: number // % demandes acceptées
+  responseRate: number // % messages répondus
+  callBookRate: number // % conversations → call booké
+  closeRate: number // % calls → vente
+}
+
 export interface AcquisitionStage {
   label: string
   value: number
@@ -113,6 +124,7 @@ export interface Client {
   startDate: string // ISO
   currentPhase: number
   kpis: Kpis
+  prospection: Prospection
   posts: Post[]
   engagementWeek: EngagementDay[]
   engagementStreak: number // jours consécutifs de routine

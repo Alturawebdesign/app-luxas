@@ -44,10 +44,11 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
         <div className="fixed inset-0 z-30 bg-forest-900/50 backdrop-blur-sm lg:hidden" onClick={() => setMenuOpen(false)} />
       )}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col bg-forest-900 text-paper-100 transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-white/10 bg-forest-900/80 text-paper-100 shadow-glass-dark backdrop-blur-2xl transition-transform duration-300 lg:translate-x-0 ${
           menuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-emerald-500/10 via-transparent to-lime-400/5" />
         <div className="flex items-center justify-between px-5 pb-2 pt-6">
           <div className="flex items-center gap-3">
             <Logo size={40} dark />
@@ -102,7 +103,7 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       </aside>
 
       <div className="lg:pl-[260px]">
-        <header className="sticky top-0 z-20 border-b border-paper-200 bg-paper-100/85 backdrop-blur-md">
+        <header className="sticky top-0 z-20 border-b border-white/50 bg-white/40 backdrop-blur-xl">
           <div className="flex h-16 items-center gap-3 px-4 sm:px-6 lg:px-8">
             <button className="btn-ghost -ml-2 lg:hidden" onClick={() => setMenuOpen(true)} aria-label="Menu">
               <Menu size={20} />
