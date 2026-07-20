@@ -7,6 +7,7 @@ import {
   Cell,
   Area,
   AreaChart,
+  CartesianGrid,
 } from 'recharts'
 import { Eye, Heart, MessageSquare, Repeat2, Flame, TrendingUp } from 'lucide-react'
 import type { Client } from '../../data/types'
@@ -47,16 +48,17 @@ export default function PostsPanel({ client }: { client: Client }) {
             <AreaChart data={client.impressionsSeries} margin={{ left: -14, right: 8, top: 6, bottom: 0 }}>
               <defs>
                 <linearGradient id="imprArea" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#10B981" stopOpacity={0.4} />
+                  <stop offset="0%" stopColor="#10B981" stopOpacity={0.28} />
                   <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 12 }} />
+              <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
+              <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={6} />
               <Tooltip
-                contentStyle={{ borderRadius: 12, border: '1px solid #E7ECE9', fontSize: 13 }}
+                contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }}
                 formatter={(v: number) => [formatNumber(v), 'Impressions']}
               />
-              <Area type="monotone" dataKey="value" stroke="#059669" strokeWidth={2.5} fill="url(#imprArea)" dot={{ r: 3, fill: '#059669' }} activeDot={{ r: 5 }} />
+              <Area type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} fill="url(#imprArea)" dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -74,13 +76,13 @@ export default function PostsPanel({ client }: { client: Client }) {
           <div className="h-44">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={client.engagementWeek} margin={{ left: -20, right: 4, top: 4, bottom: 0 }}>
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 12 }} />
+                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={4} />
                 <Tooltip
-                  cursor={{ fill: '#F3F6F4' }}
-                  contentStyle={{ borderRadius: 12, border: '1px solid #E7ECE9', fontSize: 13 }}
+                  cursor={{ fill: 'rgba(16,185,129,0.06)' }}
+                  contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }}
                   formatter={(v: number, n) => [v, n === 'comments' ? 'Commentaires' : 'Objectif']}
                 />
-                <Bar dataKey="comments" radius={[6, 6, 0, 0]} maxBarSize={34}>
+                <Bar dataKey="comments" radius={[8, 8, 8, 8]} maxBarSize={30}>
                   {client.engagementWeek.map((d, i) => (
                     <Cell key={i} fill={d.comments >= d.target ? '#10B981' : '#A7F3D0'} />
                   ))}

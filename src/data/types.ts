@@ -54,6 +54,13 @@ export interface Prospection {
   closeRate: number // % calls → vente
 }
 
+export interface MonthlyGoal {
+  metric: string // ex: "Appels qualifiés"
+  target: number
+  done: number
+  byChannel: { label: string; value: number }[]
+}
+
 export interface AcquisitionStage {
   label: string
   value: number
@@ -125,6 +132,7 @@ export interface Client {
   currentPhase: number
   kpis: Kpis
   prospection: Prospection
+  monthlyGoal: MonthlyGoal
   posts: Post[]
   engagementWeek: EngagementDay[]
   engagementStreak: number // jours consécutifs de routine

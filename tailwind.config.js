@@ -43,11 +43,11 @@ export default {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        soft: '0 1px 3px rgba(10,15,13,0.04), 0 8px 24px -12px rgba(10,15,13,0.10)',
-        card: '0 1px 2px rgba(10,15,13,0.05), 0 12px 32px -16px rgba(10,15,13,0.16)',
-        glow: '0 0 0 1px rgba(16,185,129,0.25), 0 10px 34px -8px rgba(16,185,129,0.5)',
-        'glow-lg': '0 0 0 1px rgba(16,185,129,0.3), 0 20px 60px -12px rgba(16,185,129,0.55)',
-        glass: 'inset 0 1px 0 rgba(255,255,255,0.7), 0 1px 2px rgba(10,15,13,0.04), 0 20px 44px -22px rgba(6,17,12,0.45)',
+        soft: '0 2px 6px -2px rgba(16,40,30,0.05), 0 16px 38px -20px rgba(16,40,30,0.22)',
+        card: '0 2px 8px -3px rgba(16,40,30,0.06), 0 22px 48px -24px rgba(16,40,30,0.28)',
+        glow: '0 8px 24px -6px rgba(16,185,129,0.45)',
+        'glow-lg': '0 16px 44px -10px rgba(16,185,129,0.5)',
+        glass: 'inset 0 1px 0 rgba(255,255,255,0.8), 0 20px 44px -22px rgba(16,40,30,0.22)',
         'glass-dark': 'inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 60px -24px rgba(0,0,0,0.6)',
       },
       backdropBlur: {

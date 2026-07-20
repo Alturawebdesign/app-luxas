@@ -49,6 +49,16 @@ export const clients: Client[] = [
       callBookRate: 21,
       closeRate: 28,
     },
+    monthlyGoal: {
+      metric: 'Appels qualifiés',
+      target: 48,
+      done: 56,
+      byChannel: [
+        { label: 'Contenu inbound', value: 31 },
+        { label: 'DM outbound', value: 18 },
+        { label: 'Recommandations', value: 7 },
+      ],
+    },
     posts: [
       { id: 'p1', date: '2026-07-18', hook: 'Pourquoi 80% des SaaS pilotent leur revenue à l’aveugle', format: 'Carrousel', status: 'Publié', impressions: 42300, likes: 612, comments: 148, reposts: 39, profileVisits: 540 },
       { id: 'p2', date: '2026-07-16', hook: 'Le framework RevOps que j’installe en 30 jours', format: 'Texte', status: 'Publié', impressions: 28700, likes: 401, comments: 92, reposts: 21, profileVisits: 388 },
@@ -177,6 +187,16 @@ export const clients: Client[] = [
       callBookRate: 11,
       closeRate: 25,
     },
+    monthlyGoal: {
+      metric: 'Appels qualifiés',
+      target: 8,
+      done: 8,
+      byChannel: [
+        { label: 'Contenu inbound', value: 4 },
+        { label: 'DM outbound', value: 3 },
+        { label: 'Recommandations', value: 1 },
+      ],
+    },
     posts: [
       { id: 'p1', date: '2026-07-18', hook: 'Diriger, ce n’est pas tout porter seule', format: 'Texte', status: 'Publié', impressions: 6800, likes: 132, comments: 28, reposts: 6, profileVisits: 74 },
       { id: 'p2', date: '2026-07-15', hook: 'Le syndrome de l’imposture chez les dirigeantes', format: 'Texte', status: 'Publié', impressions: 8200, likes: 176, comments: 41, reposts: 9, profileVisits: 96 },
@@ -284,6 +304,16 @@ export const clients: Client[] = [
       responseRate: 36,
       callBookRate: 18,
       closeRate: 23,
+    },
+    monthlyGoal: {
+      metric: 'Appels qualifiés',
+      target: 32,
+      done: 34,
+      byChannel: [
+        { label: 'Contenu inbound', value: 19 },
+        { label: 'DM outbound', value: 12 },
+        { label: 'Recommandations', value: 3 },
+      ],
     },
     posts: [
       { id: 'p1', date: '2026-07-19', hook: 'Le SEO n’est pas mort, ta stratégie l’est', format: 'Texte', status: 'Publié', impressions: 22400, likes: 342, comments: 76, reposts: 18, profileVisits: 264 },
@@ -402,6 +432,16 @@ export const clients: Client[] = [
       responseRate: 45,
       callBookRate: 24,
       closeRate: 31,
+    },
+    monthlyGoal: {
+      metric: 'Appels qualifiés',
+      target: 48,
+      done: 44,
+      byChannel: [
+        { label: 'Contenu inbound', value: 28 },
+        { label: 'DM outbound', value: 12 },
+        { label: 'Recommandations', value: 4 },
+      ],
     },
     posts: [
       { id: 'p1', date: '2026-07-17', hook: 'Votre trésorerie ment. Voici pourquoi.', format: 'Carrousel', status: 'Publié', impressions: 39800, likes: 588, comments: 121, reposts: 44, profileVisits: 470 },

@@ -116,15 +116,15 @@ export default function AcquisitionPanel({ client }: { client: Client }) {
           <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <ComposedChart data={client.acquisitionTrend} margin={{ left: -18, right: 6, top: 6, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(10,15,13,0.08)" vertical={false} />
-                <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 12 }} />
-                <YAxis yAxisId="l" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 11 }} tickFormatter={(v) => compact(v)} />
-                <YAxis yAxisId="r" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 11 }} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid rgba(255,255,255,0.6)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(8px)', fontSize: 13 }} />
-                <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Bar yAxisId="l" dataKey="impressions" name="Impressions" fill="#A7F3D0" radius={[5, 5, 0, 0]} maxBarSize={26} />
-                <Line yAxisId="r" dataKey="calls" name="Appels" stroke="#059669" strokeWidth={2.5} dot={{ r: 3 }} />
-                <Line yAxisId="r" dataKey="deals" name="Ventes" stroke="#0A0F0D" strokeWidth={2} strokeDasharray="4 3" dot={{ r: 3 }} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
+                <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={4} />
+                <YAxis yAxisId="l" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 11 }} tickFormatter={(v) => compact(v)} />
+                <YAxis yAxisId="r" orientation="right" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 11 }} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} cursor={{ fill: 'rgba(16,185,129,0.05)' }} />
+                <Legend wrapperStyle={{ fontSize: 12, paddingTop: 8 }} iconType="circle" />
+                <Bar yAxisId="l" dataKey="impressions" name="Impressions" fill="#A7F3D0" radius={[8, 8, 8, 8]} maxBarSize={22} />
+                <Line yAxisId="r" dataKey="calls" name="Appels" stroke="#10B981" strokeWidth={3} dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                <Line yAxisId="r" dataKey="deals" name="Ventes" stroke="#0A0F0D" strokeWidth={2} strokeDasharray="4 3" dot={false} />
               </ComposedChart>
             </ResponsiveContainer>
           </div>

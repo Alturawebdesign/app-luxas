@@ -41,9 +41,11 @@ export default function ClientDetail() {
 
       {/* Header */}
       <div className="card overflow-hidden">
-        <div className="h-20 bg-gradient-to-r from-forest-900 via-emerald-800 to-emerald-600" />
+        <div className="relative h-28 bg-gradient-to-br from-emerald-600 via-emerald-500 to-teal-400">
+          <div className="pointer-events-none absolute -right-8 -top-16 h-52 w-52 rounded-full bg-white/15 blur-2xl" />
+        </div>
         <div className="px-6 pb-6">
-          <div className="-mt-9 flex flex-wrap items-end justify-between gap-4">
+          <div className="-mt-11 flex flex-wrap items-end justify-between gap-4">
             <div className="flex items-end gap-4">
               <div className="rounded-2xl border-4 border-white shadow-soft">
                 <Avatar initials={initials(client)} color={client.avatarColor} size={80} />

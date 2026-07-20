@@ -72,14 +72,14 @@ export default function Dashboard() {
               <AreaChart data={aggSeries} margin={{ left: -10, right: 8, top: 6, bottom: 0 }}>
                 <defs>
                   <linearGradient id="aggArea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#10B981" stopOpacity={0.4} />
+                    <stop offset="0%" stopColor="#10B981" stopOpacity={0.28} />
                     <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E7ECE9" vertical={false} />
-                <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#697570', fontSize: 12 }} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #E7ECE9', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
-                <Area type="monotone" dataKey="value" stroke="#059669" strokeWidth={2.5} fill="url(#aggArea)" dot={{ r: 3, fill: '#059669' }} activeDot={{ r: 5 }} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
+                <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#8A948F', fontSize: 12 }} dy={6} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
+                <Area type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} fill="url(#aggArea)" dot={false} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
