@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     <p className="text-sm font-medium text-ink">{user.name}</p>
                     <p className="text-xs text-ink-muted">{user.title}</p>
                   </div>
-                  <Avatar initials={user.initials} color="#2563EB" size={38} />
+                  <Avatar initials={user.initials} color="#059669" size={38} />
                   <button
                     className="btn-ghost"
                     onClick={() => {

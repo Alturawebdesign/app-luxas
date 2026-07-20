@@ -11,9 +11,10 @@
     @apply text-ink font-sans antialiased;
     min-height: 100vh;
     background:
-      radial-gradient(60rem 40rem at 82% -6%, rgba(147, 180, 253, 0.55), transparent 55%),
-      radial-gradient(50rem 40rem at 6% 4%, rgba(99, 150, 251, 0.35), transparent 52%),
-      linear-gradient(165deg, #aec3f2 0%, #c4d2f6 24%, #dce5fb 52%, #e9effc 80%, #eef2fd 100%);
+      radial-gradient(58rem 42rem at 84% -6%, rgba(52, 211, 153, 0.4), transparent 56%),
+      radial-gradient(48rem 40rem at 6% 2%, rgba(16, 185, 129, 0.3), transparent 54%),
+      radial-gradient(44rem 40rem at 92% 108%, rgba(5, 150, 105, 0.24), transparent 60%),
+      linear-gradient(165deg, #d8ece0 0%, #e6f2ea 26%, #eef5f0 56%, #f2f7f4 100%);
     background-attachment: fixed;
   }
   ::selection {
@@ -46,16 +47,16 @@
   }
   .btn-primary {
     @apply btn text-white;
-    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
     box-shadow:
-      0 8px 24px -8px rgba(59, 130, 246, 0.7),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      0 8px 24px -8px rgba(16, 185, 129, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.32);
   }
   .btn-primary:hover {
     filter: brightness(1.05);
     box-shadow:
-      0 12px 32px -8px rgba(59, 130, 246, 0.8),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      0 12px 32px -8px rgba(16, 185, 129, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.32);
   }
   .btn-dark {
     @apply btn text-white;
@@ -71,7 +72,7 @@
   .btn-outline {
     @apply btn font-medium text-ink-soft;
     background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(59, 90, 160, 0.14);
+    border: 1px solid rgba(16, 40, 30, 0.1);
   }
   .btn-outline:hover {
     background: rgba(255, 255, 255, 0.9);
@@ -82,7 +83,7 @@
   .input {
     @apply w-full rounded-2xl px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200/60;
     background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(59, 90, 160, 0.14);
+    border: 1px solid rgba(16, 40, 30, 0.1);
   }
   .label {
     @apply text-xs font-semibold uppercase tracking-wide text-ink-muted;
@@ -95,18 +96,18 @@
 /* Scrollbars */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(59, 130, 246, 0.35) transparent;
+  scrollbar-color: rgba(16, 185, 129, 0.35) transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(16, 185, 129, 0.3);
   border-radius: 999px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.5);
+  background: rgba(16, 185, 129, 0.5);
 }
 
 @keyframes fadeInUp {

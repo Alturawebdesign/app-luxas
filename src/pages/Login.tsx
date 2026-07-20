@@ -32,7 +32,7 @@ export default function Login() {
     <div className="flex min-h-screen bg-paper-100">
       {/* Left */}
       <div className="relative hidden w-[46%] flex-col justify-between overflow-hidden bg-forest-900 p-12 text-white lg:flex">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.14]" style={{ backgroundImage: 'radial-gradient(circle at 20% 15%, #3B82F6 0%, transparent 42%), radial-gradient(circle at 85% 75%, #38BDF8 0%, transparent 48%)' }} />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.14]" style={{ backgroundImage: 'radial-gradient(circle at 20% 15%, #10B981 0%, transparent 42%), radial-gradient(circle at 85% 75%, #A3E635 0%, transparent 48%)' }} />
         <div className="relative flex items-center gap-3">
           <Logo size={44} dark />
           <div className="leading-tight">

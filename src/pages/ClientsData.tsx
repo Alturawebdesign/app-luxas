@@ -87,10 +87,10 @@ export default function ClientsData() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} layout="vertical" margin={{ left: 10, right: 16, top: 4, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(30,58,120,0.06)" horizontal={false} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" horizontal={false} />
                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 11 }} tickFormatter={(v) => compact(v)} />
-                <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#1B2A4A', fontSize: 12 }} width={60} />
-                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} cursor={{ fill: 'rgba(59,130,246,0.05)' }} />
+                <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#0A0F0D', fontSize: 12 }} width={60} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} cursor={{ fill: 'rgba(16,185,129,0.05)' }} />
                 <Bar dataKey="impressions" radius={[8, 8, 8, 8]} maxBarSize={26}>
                   {chartData.map((d, i) => <Cell key={i} fill={d.color} />)}
                 </Bar>

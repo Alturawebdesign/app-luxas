@@ -72,14 +72,14 @@ export default function Dashboard() {
               <AreaChart data={aggSeries} margin={{ left: -10, right: 8, top: 6, bottom: 0 }}>
                 <defs>
                   <linearGradient id="aggArea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#3B82F6" stopOpacity={0.28} />
-                    <stop offset="100%" stopColor="#3B82F6" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#10B981" stopOpacity={0.28} />
+                    <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(30,58,120,0.06)" vertical={false} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
                 <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} dy={6} />
-                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
-                <Area type="monotone" dataKey="value" stroke="#3B82F6" strokeWidth={3} fill="url(#aggArea)" dot={{ r: 4, fill: '#3B82F6', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6, strokeWidth: 2, stroke: '#fff' }} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
+                <Area type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} fill="url(#aggArea)" dot={{ r: 4, fill: '#10B981', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6, strokeWidth: 2, stroke: '#fff' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>

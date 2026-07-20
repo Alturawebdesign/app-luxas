@@ -5,7 +5,7 @@ import type { Client } from '../../data/types'
 import { ProgressRing, ProgressBar, StatusBadge, Delta } from '../../components/ui'
 import { compact, formatNumber, formatDateLong, formatShort } from '../../lib/format'
 
-const CHANNEL_COLORS = ['#3B82F6', '#60A5FA', '#5EEAD4']
+const CHANNEL_COLORS = ['#10B981', '#34D399', '#5EEAD4']
 
 export default function ClientHome({ client }: { client: Client }) {
   const k = client.kpis
@@ -19,17 +19,17 @@ export default function ClientHome({ client }: { client: Client }) {
   const noteFromThomas = [...client.messages].reverse().find((m) => m.from === 'thomas')
 
   const kpis = [
-    { icon: Eye, label: 'Impressions / 30j', value: compact(k.impressions), delta: k.impressionsGrowth, tint: 'bg-blue-50 text-blue-600' },
+    { icon: Eye, label: 'Impressions / 30j', value: compact(k.impressions), delta: k.impressionsGrowth, tint: 'bg-emerald-50 text-emerald-600' },
     { icon: TrendingUp, label: 'Engagement', value: `${k.engagementRate}%`, delta: 5, tint: 'bg-teal-50 text-teal-600' },
-    { icon: PhoneCall, label: 'Appels qualifiés / sem.', value: `${k.qualifiedCallsPerWeek}`, delta: 8, tint: 'bg-indigo-50 text-indigo-600' },
-    { icon: Handshake, label: 'Clients signés / 30j', value: `${k.dealsWon}`, delta: 11, tint: 'bg-violet-50 text-violet-600' },
+    { icon: PhoneCall, label: 'Appels qualifiés / sem.', value: `${k.qualifiedCallsPerWeek}`, delta: 8, tint: 'bg-teal-50 text-teal-600' },
+    { icon: Handshake, label: 'Clients signés / 30j', value: `${k.dealsWon}`, delta: 11, tint: 'bg-emerald-50 text-emerald-600' },
   ]
 
   return (
     <div className="animate-in space-y-6">
       {/* Hero */}
       <div className="card relative overflow-hidden !border-transparent p-0">
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, #1D4ED8 0%, #3B82F6 55%, #60A5FA 120%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, #05100B 0%, #047857 52%, #10B981 120%)' }} />
         <div className="pointer-events-none absolute -right-10 -top-20 h-64 w-64 rounded-full bg-white/15 blur-2xl" />
         <div className="relative flex flex-wrap items-center justify-between gap-6 p-7 text-white">
           <div>
@@ -102,14 +102,14 @@ export default function ClientHome({ client }: { client: Client }) {
               <AreaChart data={client.impressionsSeries} margin={{ left: -12, right: 8, top: 6, bottom: 0 }}>
                 <defs>
                   <linearGradient id="homeArea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#3B82F6" stopOpacity={0.28} />
-                    <stop offset="100%" stopColor="#3B82F6" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#10B981" stopOpacity={0.28} />
+                    <stop offset="100%" stopColor="#10B981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(30,58,120,0.06)" vertical={false} />
+                <CartesianGrid strokeDasharray="4 4" stroke="rgba(16,40,30,0.06)" vertical={false} />
                 <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#94A3B8', fontSize: 12 }} dy={6} />
-                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(30,58,120,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
-                <Area type="monotone" dataKey="value" stroke="#3B82F6" strokeWidth={3} fill="url(#homeArea)" dot={{ r: 4, fill: '#3B82F6', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6, strokeWidth: 2, stroke: '#fff' }} />
+                <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(8px)', boxShadow: '0 12px 30px -12px rgba(16,40,30,0.3)', fontSize: 13 }} formatter={(v: number) => [formatNumber(v), 'Impressions']} />
+                <Area type="monotone" dataKey="value" stroke="#10B981" strokeWidth={3} fill="url(#homeArea)" dot={{ r: 4, fill: '#10B981', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6, strokeWidth: 2, stroke: '#fff' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -119,7 +119,7 @@ export default function ClientHome({ client }: { client: Client }) {
       {/* Streak + next post + note */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="card flex items-center gap-4 p-6">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-100 text-sky-600"><Flame size={22} /></span>
+          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-lime-100 text-emerald-700"><Flame size={22} /></span>
           <div>
             <p className="stat text-2xl text-ink">{client.engagementStreak} j</p>
             <p className="text-sm text-ink-muted">routine d’engagement</p>

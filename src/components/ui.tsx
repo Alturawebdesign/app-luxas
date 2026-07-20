@@ -6,11 +6,11 @@ export function Logo({ size = 40 }: { size?: number; dark?: boolean }) {
   return (
     <div
       className="flex items-center justify-center rounded-2xl shadow-glow"
-      style={{ width: size, height: size, background: 'linear-gradient(140deg, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)' }}
+      style={{ width: size, height: size, background: 'linear-gradient(140deg, #15231C 0%, #0A0F0D 100%)' }}
     >
       <svg width={size * 0.6} height={size * 0.6} viewBox="0 0 64 64" fill="none">
-        <path d="M12 42 L26 20 L33 31 L42 16 L52 42" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="42" cy="16" r="4" fill="#7DD3FC" />
+        <path d="M12 42 L26 20 L33 31 L42 16 L52 42" stroke="#10B981" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="42" cy="16" r="4" fill="#4ADE80" />
       </svg>
     </div>
   )
@@ -72,7 +72,7 @@ const STATUS_STYLES: Record<string, string> = {
   Signé: 'bg-green-100 text-green-700',
   Payé: 'bg-green-100 text-green-700',
   'En attente': 'bg-amber-100 text-amber-700',
-  Disponible: 'bg-sky-100 text-sky-700',
+  Disponible: 'bg-emerald-50 text-emerald-700',
 }
 
 export function StatusBadge({ status }: { status: string }) {
@@ -131,7 +131,7 @@ export function ProgressRing({
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#DCE5F5" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E7ECE9" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -146,8 +146,8 @@ export function ProgressRing({
         />
         <defs>
           <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#60A5FA" />
-            <stop offset="100%" stopColor="#2563EB" />
+            <stop offset="0%" stopColor="#34D399" />
+            <stop offset="100%" stopColor="#059669" />
           </linearGradient>
         </defs>
       </svg>

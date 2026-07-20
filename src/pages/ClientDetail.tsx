@@ -41,7 +41,7 @@ export default function ClientDetail() {
 
       {/* Header */}
       <div className="card overflow-hidden">
-        <div className="relative h-28 bg-gradient-to-br from-emerald-600 via-emerald-500 to-teal-400">
+        <div className="relative h-28 bg-gradient-to-br from-forest-900 via-emerald-600 to-emerald-400">
           <div className="pointer-events-none absolute -right-8 -top-16 h-52 w-52 rounded-full bg-white/15 blur-2xl" />
         </div>
         <div className="px-6 pb-6">

@@ -104,7 +104,7 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
                   <p className="text-sm font-medium text-ink">{user.name}</p>
                   <p className="text-xs text-ink-muted">Compte client</p>
                 </div>
-                <Avatar initials={user.initials} color={user.role === 'client' ? user.avatarColor : '#2563EB'} size={38} />
+                <Avatar initials={user.initials} color={user.role === 'client' ? user.avatarColor : '#059669'} size={38} />
                 <button className="btn-ghost" onClick={() => { logout(); navigate('/login') }} aria-label="Se déconnecter">
                   <LogOut size={18} />
                 </button>

@@ -4,41 +4,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Thomas Nurit — refonte « liquid glass » bleu périwinkle
+        // Thomas Nurit — liquid glass NOIR & VERT
         ink: {
-          DEFAULT: '#1B2A4A',
-          soft: '#3B4B70',
-          muted: '#7C89A6',
+          DEFAULT: '#0A0F0D',
+          soft: '#232A27',
+          muted: '#6B7772',
         },
         paper: {
-          50: '#FBFCFF',
-          100: '#EEF2FC',
-          200: '#E1E8F7',
-          300: '#CED9F2',
+          50: '#FAFBFA',
+          100: '#F1F5F3',
+          200: '#E5EBE7',
+          300: '#D3DCD6',
         },
-        // deep navy (accents sombres)
+        // near-black (accents sombres = « noir »)
         forest: {
-          700: '#20305C',
-          800: '#17244A',
-          900: '#0F1A38',
+          700: '#15231C',
+          800: '#0C1712',
+          900: '#05100B',
         },
-        // "emerald" est REMAPPÉ en bleu = accent principal de marque
+        // accent principal = VERT
         emerald: {
-          50: '#EFF4FF',
-          100: '#DDE8FF',
-          200: '#C0D4FE',
-          300: '#97B6FD',
-          400: '#6296FB',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E40AF',
+          50: '#ECFDF5',
+          100: '#D1FAE5',
+          200: '#A7F3D0',
+          300: '#6EE7B7',
+          400: '#34D399',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
+          800: '#065F46',
         },
-        // "lime" remappé en cyan/sky (pop secondaire)
+        // pop vert clair / menthe
         lime: {
-          100: '#E0F2FE',
-          300: '#7DD3FC',
-          400: '#38BDF8',
+          100: '#DCFCE7',
+          300: '#86EFAC',
+          400: '#4ADE80',
         },
       },
       fontFamily: {
@@ -46,11 +46,11 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 2px 8px -3px rgba(30,58,120,0.08), 0 18px 42px -22px rgba(30,58,120,0.3)',
-        card: '0 2px 10px -3px rgba(30,58,120,0.1), 0 26px 52px -26px rgba(30,58,120,0.34)',
-        glow: '0 8px 26px -6px rgba(59,130,246,0.5)',
-        'glow-lg': '0 16px 46px -10px rgba(59,130,246,0.55)',
-        glass: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 22px 48px -24px rgba(30,58,120,0.28)',
+        soft: '0 2px 8px -3px rgba(6,17,12,0.08), 0 18px 42px -22px rgba(6,17,12,0.3)',
+        card: '0 2px 10px -3px rgba(6,17,12,0.1), 0 26px 52px -26px rgba(6,17,12,0.34)',
+        glow: '0 8px 26px -6px rgba(16,185,129,0.5)',
+        'glow-lg': '0 16px 46px -10px rgba(16,185,129,0.55)',
+        glass: 'inset 0 1px 0 rgba(255,255,255,0.9), 0 22px 48px -24px rgba(6,17,12,0.26)',
       },
       keyframes: {
         fadeInUp: {
